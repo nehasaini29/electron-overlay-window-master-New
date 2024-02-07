@@ -206,11 +206,11 @@ class OverlayControllerGlobal {
   }
   attachByTitle(electronWindow, targetWindowTitle, options = {}) {
     var _a, _b, _c;
-    if (this.isInitialized) {
-      throw new Error("Library can be initialized only once.");
-    } else {
-      this.isInitialized = true;
-    }
+    // if (this.isInitialized) {
+    //   throw new Error("Library can be initialized only once.");
+    // } else {
+    //   this.isInitialized = true;
+    // }
     this.electronWindow = electronWindow;
     (_a = this.electronWindow) === null || _a === void 0
       ? void 0
