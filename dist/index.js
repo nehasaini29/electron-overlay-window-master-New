@@ -72,25 +72,27 @@ class OverlayControllerGlobal {
       dispatchMoveresize();
     });
     this.events.on("blur", () => {
-      // this.targetHasFocus = false;
-      // if (
-      //   this.electronWindow &&
-      //   (isMac ||
-      //     (this.focusNext !== "overlay" && !this.electronWindow.isFocused()))
-      // ) {
-      //   this.electronWindow.hide();
-      // }
+      console.log("blur");
+      this.targetHasFocus = false;
+      if (
+        this.electronWindow &&
+        (isMac ||
+          (this.focusNext !== "overlay" && !this.electronWindow.isFocused()))
+      ) {
+        this.electronWindow.hide();
+      }
     });
     this.events.on("focus", () => {
-      // this.focusNext = undefined;
-      // this.targetHasFocus = true;
-      // if (this.electronWindow) {
-      //   this.electronWindow.setIgnoreMouseEvents(true);
-      //   if (!this.electronWindow.isVisible()) {
-      //     this.electronWindow.showInactive();
-      //     this.electronWindow.setAlwaysOnTop(true, "screen-saver");
-      //   }
-      // }
+      console.log("focus");
+      this.focusNext = undefined;
+      this.targetHasFocus = true;
+      if (this.electronWindow) {
+        this.electronWindow.setIgnoreMouseEvents(true);
+        if (!this.electronWindow.isVisible()) {
+          this.electronWindow.showInactive();
+          this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+        }
+      }
     });
   }
   async handleFullscreen(isFullscreen) {
@@ -196,15 +198,15 @@ class OverlayControllerGlobal {
     this.electronWindow.setIgnoreMouseEvents(false);
     this.electronWindow.focus();
 
-    this.focusNext = undefined;
-    this.targetHasFocus = true;
-    if (this.electronWindow) {
-      this.electronWindow.setIgnoreMouseEvents(true);
-      if (!this.electronWindow.isVisible()) {
-        this.electronWindow.showInactive();
-        this.electronWindow.setAlwaysOnTop(true, "screen-saver");
-      }
-    }
+    // this.focusNext = undefined;
+    // this.targetHasFocus = true;
+    // if (this.electronWindow) {
+    //   this.electronWindow.setIgnoreMouseEvents(true);
+    //   if (!this.electronWindow.isVisible()) {
+    //     this.electronWindow.showInactive();
+    //     this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+    //   }
+    // }
   }
   focusTarget() {
     var _a;
@@ -225,6 +227,7 @@ class OverlayControllerGlobal {
     (_a = this.electronWindow) === null || _a === void 0
       ? void 0
       : _a.on("blur", () => {
+          console.log("electronWindow blur");
           if (!this.targetHasFocus && this.focusNext !== "target") {
             this.electronWindow.hide();
           }
@@ -232,6 +235,7 @@ class OverlayControllerGlobal {
     (_b = this.electronWindow) === null || _b === void 0
       ? void 0
       : _b.on("focus", () => {
+          console.log("electronWindow focus");
           this.focusNext = undefined;
         });
     this.attachOptions = options;
