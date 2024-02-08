@@ -196,15 +196,15 @@ class OverlayControllerGlobal {
     this.electronWindow.setIgnoreMouseEvents(false);
     this.electronWindow.focus();
 
-    this.focusNext = undefined;
-    this.targetHasFocus = true;
-    if (this.electronWindow) {
-      this.electronWindow.setIgnoreMouseEvents(true);
-      if (!this.electronWindow.isVisible()) {
-        this.electronWindow.showInactive();
-        this.electronWindow.setAlwaysOnTop(true, "screen-saver");
-      }
-    }
+    // this.focusNext = undefined;
+    // this.targetHasFocus = true;
+    // if (this.electronWindow) {
+    //   this.electronWindow.setIgnoreMouseEvents(true);
+    //   if (!this.electronWindow.isVisible()) {
+    //     this.electronWindow.showInactive();
+    //     this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+    //   }
+    // }
   }
   focusTarget() {
     var _a;
