@@ -227,17 +227,17 @@ class OverlayControllerGlobal {
     (_a = this.electronWindow) === null || _a === void 0
       ? void 0
       : _a.on("blur", () => {
-          console.log("electronWindow blur");
-          if (!this.targetHasFocus && this.focusNext !== "target") {
-            this.electronWindow.hide();
-          }
-        });
+        console.log("electronWindow blur");
+        if (!this.targetHasFocus && this.focusNext !== "target") {
+          this.electronWindow.hide();
+        }
+      });
     (_b = this.electronWindow) === null || _b === void 0
       ? void 0
       : _b.on("focus", () => {
-          console.log("electronWindow focus");
-          this.focusNext = undefined;
-        });
+        console.log("electronWindow focus");
+        this.focusNext = undefined;
+      });
     this.attachOptions = options;
     if (isMac) {
       this.calculateMacTitleBarHeight();
@@ -256,6 +256,31 @@ class OverlayControllerGlobal {
       throw new Error("Not implemented on your platform.");
     }
     return lib.screenshot();
+  }
+
+  startDraw() {
+
+    this.focusNext = undefined;
+    this.targetHasFocus = true;
+    console.log('startdraw', this.electronWindow);
+    if (this.electronWindow) {
+      this.electronWindow.setIgnoreMouseEvents(true);
+      if (!this.electronWindow.isVisible()) {
+        this.electronWindow.showInactive();
+        this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+      }
+    }
+  }
+  endDraw() {
+    this.targetHasFocus = false;
+    console.log('endDraw', this.electronWindow);
+    if (
+      this.electronWindow &&
+      (isMac ||
+        (this.focusNext !== "overlay" && !this.electronWindow.isFocused()))
+    ) {
+      this.electronWindow.hide();
+    }
   }
 }
 exports.OverlayController = new OverlayControllerGlobal();
