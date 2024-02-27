@@ -209,6 +209,8 @@ class OverlayControllerGlobal {
     // }
   }
   focusTarget() {
+    console.log('focusTarget');
+    this.startDraw();
     var _a;
     this.focusNext = "target";
     (_a = this.electronWindow) === null || _a === void 0
@@ -216,7 +218,7 @@ class OverlayControllerGlobal {
       : _a.setIgnoreMouseEvents(true);
     lib.focusTarget();
 
-    this.startDraw();
+
 
   }
   attachByTitle(electronWindow, targetWindowTitle, options = {}) {
