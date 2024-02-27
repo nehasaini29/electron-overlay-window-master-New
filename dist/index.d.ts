@@ -56,6 +56,8 @@ declare class OverlayControllerGlobal {
     options?: AttachOptions
   ): void;
   screenshot(): Buffer;
+  startDraw(): void;
+  endDraw(): void;
 }
 export declare const OverlayController: OverlayControllerGlobal;
 export {};
