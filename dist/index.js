@@ -302,10 +302,10 @@ class OverlayControllerGlobal {
       this.electronWindow.showInactive();
       this.electronWindow.setAlwaysOnTop(true, "screen-saver");
     }
-    if (e.isFullscreen !== undefined) {
-      this.handleFullscreen(e.isFullscreen);
-    }
-    this.targetBounds = e;
+    // if (e.isFullscreen !== undefined) {
+    //   this.handleFullscreen(e.isFullscreen);
+    // }
+    // this.targetBounds = e;
     this.updateOverlayBounds();
   }
 }
