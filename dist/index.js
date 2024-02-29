@@ -120,7 +120,7 @@ class OverlayControllerGlobal {
   }
   updateOverlayBounds() {
     let lastBounds = this.adjustBoundsForMacTitleBar(this.targetBounds);
-    if (lastBounds.width === 0 || lastBounds.height === 0) return;
+    // if (lastBounds.width === 0 || lastBounds.height === 0) return;
     if (!this.electronWindow) return;
     if (process.platform === "win32") {
       lastBounds = electron_1.screen.screenToDipRect(
@@ -128,6 +128,7 @@ class OverlayControllerGlobal {
         this.targetBounds
       );
     }
+    console.log("lastBounds1", lastBounds);
     this.electronWindow.setBounds(lastBounds);
     // if moved to screen with different DPI, 2nd call to setBounds will correctly resize window
     // dipRect must be recalculated as well
@@ -136,6 +137,7 @@ class OverlayControllerGlobal {
         this.electronWindow,
         this.targetBounds
       );
+      console.log("lastBounds2", lastBounds);
       this.electronWindow.setBounds(lastBounds);
     }
   }
