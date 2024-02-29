@@ -216,7 +216,7 @@ class OverlayControllerGlobal {
     (_a = this.electronWindow) === null || _a === void 0
       ? void 0
       : _a.setIgnoreMouseEvents(true);
-    lib.focusTarget();
+    // lib.focusTarget();
     this.startDraw();
   }
   attachByTitle(electronWindow, targetWindowTitle, options = {}) {
