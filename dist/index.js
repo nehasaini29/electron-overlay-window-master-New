@@ -43,6 +43,7 @@ class OverlayControllerGlobal {
     this.attachOptions = {};
     this.events = new node_events_1.EventEmitter();
     this.events.on("attach", (e) => {
+      console.log("attach");
       this.targetHasFocus = true;
       if (this.electronWindow) {
         this.electronWindow.setIgnoreMouseEvents(true);
@@ -59,6 +60,7 @@ class OverlayControllerGlobal {
       this.handleFullscreen(e.isFullscreen);
     });
     this.events.on("detach", () => {
+      console.log("detach");
       var _a;
       this.targetHasFocus = false;
       (_a = this.electronWindow) === null || _a === void 0 ? void 0 : _a.hide();
