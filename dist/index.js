@@ -43,7 +43,7 @@ class OverlayControllerGlobal {
     this.attachOptions = {};
     this.events = new node_events_1.EventEmitter();
     this.events.on("attach", (e) => {
-      console.log("attach ===>");
+      console.log("attach ===>", e);
       // this.targetHasFocus = true;
       // if (this.electronWindow) {
       //   this.electronWindow.setIgnoreMouseEvents(true);
