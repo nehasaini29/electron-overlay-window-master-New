@@ -43,18 +43,18 @@ class OverlayControllerGlobal {
     this.attachOptions = {};
     this.events = new node_events_1.EventEmitter();
     this.events.on("attach", (e) => {
-      console.log("attach");
-      this.targetHasFocus = true;
-      if (this.electronWindow) {
-        this.electronWindow.setIgnoreMouseEvents(true);
-        this.electronWindow.showInactive();
-        this.electronWindow.setAlwaysOnTop(true, "screen-saver");
-      }
-      if (e.isFullscreen !== undefined) {
-        this.handleFullscreen(e.isFullscreen);
-      }
-      this.targetBounds = e;
-      this.updateOverlayBounds();
+      console.log("attach ===>");
+      // this.targetHasFocus = true;
+      // if (this.electronWindow) {
+      //   this.electronWindow.setIgnoreMouseEvents(true);
+      //   this.electronWindow.showInactive();
+      //   this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+      // }
+      // if (e.isFullscreen !== undefined) {
+      //   this.handleFullscreen(e.isFullscreen);
+      // }
+      // this.targetBounds = e;
+      // this.updateOverlayBounds();
     });
     this.events.on("fullscreen", (e) => {
       this.handleFullscreen(e.isFullscreen);
@@ -280,6 +280,7 @@ class OverlayControllerGlobal {
       // }
     }
   }
+
   endDraw() {
     this.targetHasFocus = false;
     console.log("endDraw", this.electronWindow);
@@ -290,6 +291,20 @@ class OverlayControllerGlobal {
     ) {
       this.electronWindow.hide();
     }
+  }
+
+  attachWindow() {
+    this.targetHasFocus = true;
+    if (this.electronWindow) {
+      this.electronWindow.setIgnoreMouseEvents(true);
+      this.electronWindow.showInactive();
+      this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+    }
+    if (e.isFullscreen !== undefined) {
+      this.handleFullscreen(e.isFullscreen);
+    }
+    this.targetBounds = e;
+    this.updateOverlayBounds();
   }
 }
 exports.OverlayController = new OverlayControllerGlobal();
