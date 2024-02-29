@@ -271,10 +271,10 @@ class OverlayControllerGlobal {
     );
     if (this.electronWindow) {
       this.electronWindow.setIgnoreMouseEvents(true);
-      if (!this.electronWindow.isVisible()) {
-        this.electronWindow.showInactive();
-        this.electronWindow.setAlwaysOnTop(true, "screen-saver");
-      }
+      // if (!this.electronWindow.isVisible()) {
+      //   this.electronWindow.showInactive();
+      //   this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+      // }
     }
   }
   endDraw() {
