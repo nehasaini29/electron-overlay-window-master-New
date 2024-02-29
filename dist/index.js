@@ -295,6 +295,7 @@ class OverlayControllerGlobal {
   }
 
   attachWindow() {
+    console.log("attachWindow", this.electronWindow);
     this.targetHasFocus = true;
     if (this.electronWindow) {
       this.electronWindow.setIgnoreMouseEvents(true);
