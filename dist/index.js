@@ -217,7 +217,7 @@ class OverlayControllerGlobal {
       ? void 0
       : _a.setIgnoreMouseEvents(true);
     lib.focusTarget();
-    this.startDraw();
+    // this.startDraw();
   }
   attachByTitle(electronWindow, targetWindowTitle, options = {}) {
     var _a, _b, _c;
@@ -232,6 +232,7 @@ class OverlayControllerGlobal {
       : _a.on("blur", () => {
           console.log("electronWindow blur");
           if (!this.targetHasFocus && this.focusNext !== "target") {
+            console.log("electronWindow blur if enter");
             this.electronWindow.hide();
           }
         });
