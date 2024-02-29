@@ -220,7 +220,7 @@ class OverlayControllerGlobal {
     this.startDraw();
   }
   attachByTitle(electronWindow, targetWindowTitle, options = {}) {
-    var _a, _b, _c, _d;
+    var _a, _b, _c;
     // if (this.isInitialized) {
     //   throw new Error("Library can be initialized only once.");
     // } else {
@@ -240,11 +240,6 @@ class OverlayControllerGlobal {
       : _b.on("focus", () => {
           console.log("electronWindow focus");
           this.focusNext = undefined;
-        });
-    (_d = this.electronWindow) === null || _d === void 0
-      ? void 0
-      : _d.on("onmouseenter", () => {
-          console.log("electronWindow onmouseenter");
         });
     this.attachOptions = options;
     if (isMac) {
