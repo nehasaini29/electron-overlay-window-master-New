@@ -133,16 +133,16 @@ class OverlayControllerGlobal {
     });
 
     this.events.on("focus", () => {
-      this.focusNext = undefined;
-      this.targetHasFocus = true;
-
-      if (this.electronWindow) {
-        this.electronWindow.setIgnoreMouseEvents(true);
-        if (!this.electronWindow.isVisible()) {
-          this.electronWindow.showInactive();
-          this.electronWindow.setAlwaysOnTop(true, "screen-saver");
-        }
-      }
+      console.log("index.ts focus");
+      // this.focusNext = undefined;
+      // this.targetHasFocus = true;
+      // if (this.electronWindow) {
+      //   this.electronWindow.setIgnoreMouseEvents(true);
+      //   if (!this.electronWindow.isVisible()) {
+      //     this.electronWindow.showInactive();
+      //     this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+      //   }
+      // }
     });
   }
 
@@ -264,7 +264,7 @@ class OverlayControllerGlobal {
     this.focusNext = "target";
     this.electronWindow?.setIgnoreMouseEvents(true);
     lib.focusTarget();
-    this.startDraw();
+    // this.startDraw();
   }
 
   attachByTitle(
