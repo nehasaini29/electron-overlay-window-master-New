@@ -140,6 +140,7 @@ class OverlayControllerGlobal {
     }
   }
   handler(e) {
+    console.log("handler", e);
     switch (e.type) {
       case EventType.EVENT_ATTACH:
         this.events.emit("attach", e);
