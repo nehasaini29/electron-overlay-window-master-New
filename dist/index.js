@@ -73,26 +73,26 @@ class OverlayControllerGlobal {
     });
     this.events.on("blur", () => {
       console.log("blur");
-      this.targetHasFocus = false;
-      if (
-        this.electronWindow &&
-        (isMac ||
-          (this.focusNext !== "overlay" && !this.electronWindow.isFocused()))
-      ) {
-        this.electronWindow.hide();
-      }
+      // this.targetHasFocus = false;
+      // if (
+      //   this.electronWindow &&
+      //   (isMac ||
+      //     (this.focusNext !== "overlay" && !this.electronWindow.isFocused()))
+      // ) {
+      //   this.electronWindow.hide();
+      // }
     });
     this.events.on("focus", () => {
       console.log("focus");
-      this.focusNext = undefined;
-      this.targetHasFocus = true;
-      if (this.electronWindow) {
-        this.electronWindow.setIgnoreMouseEvents(true);
-        if (!this.electronWindow.isVisible()) {
-          this.electronWindow.showInactive();
-          this.electronWindow.setAlwaysOnTop(true, "screen-saver");
-        }
-      }
+      // this.focusNext = undefined;
+      // this.targetHasFocus = true;
+      // if (this.electronWindow) {
+      //   this.electronWindow.setIgnoreMouseEvents(true);
+      //   if (!this.electronWindow.isVisible()) {
+      //     this.electronWindow.showInactive();
+      //     this.electronWindow.setAlwaysOnTop(true, "screen-saver");
+      //   }
+      // }
     });
   }
   async handleFullscreen(isFullscreen) {
@@ -217,7 +217,6 @@ class OverlayControllerGlobal {
       ? void 0
       : _a.setIgnoreMouseEvents(true);
     lib.focusTarget();
-    this.startDraw();
   }
   attachByTitle(electronWindow, targetWindowTitle, options = {}) {
     var _a, _b, _c;
