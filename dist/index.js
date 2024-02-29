@@ -191,6 +191,7 @@ class OverlayControllerGlobal {
     return newBounds;
   }
   activateOverlay() {
+    console.log("activateOverlay");
     if (!this.electronWindow) {
       throw new Error("You are using the library in tracking mode");
     }
@@ -209,14 +210,14 @@ class OverlayControllerGlobal {
     // }
   }
   focusTarget() {
-    console.log('focusTarget');
+    console.log("focusTarget");
     var _a;
     this.focusNext = "target";
     (_a = this.electronWindow) === null || _a === void 0
       ? void 0
       : _a.setIgnoreMouseEvents(true);
     lib.focusTarget();
-
+    this.startDraw();
   }
   attachByTitle(electronWindow, targetWindowTitle, options = {}) {
     var _a, _b, _c;
@@ -229,17 +230,17 @@ class OverlayControllerGlobal {
     (_a = this.electronWindow) === null || _a === void 0
       ? void 0
       : _a.on("blur", () => {
-        console.log("electronWindow blur");
-        if (!this.targetHasFocus && this.focusNext !== "target") {
-          this.electronWindow.hide();
-        }
-      });
+          console.log("electronWindow blur");
+          if (!this.targetHasFocus && this.focusNext !== "target") {
+            this.electronWindow.hide();
+          }
+        });
     (_b = this.electronWindow) === null || _b === void 0
       ? void 0
       : _b.on("focus", () => {
-        console.log("electronWindow focus");
-        this.focusNext = undefined;
-      });
+          console.log("electronWindow focus");
+          this.focusNext = undefined;
+        });
     this.attachOptions = options;
     if (isMac) {
       this.calculateMacTitleBarHeight();
@@ -261,10 +262,9 @@ class OverlayControllerGlobal {
   }
 
   startDraw() {
-
     this.focusNext = undefined;
     this.targetHasFocus = true;
-    console.log('startdraw', this.electronWindow);
+    console.log("startdraw", this.electronWindow);
     if (this.electronWindow) {
       this.electronWindow.setIgnoreMouseEvents(true);
       if (!this.electronWindow.isVisible()) {
@@ -275,7 +275,7 @@ class OverlayControllerGlobal {
   }
   endDraw() {
     this.targetHasFocus = false;
-    console.log('endDraw', this.electronWindow);
+    console.log("endDraw", this.electronWindow);
     if (
       this.electronWindow &&
       (isMac ||
